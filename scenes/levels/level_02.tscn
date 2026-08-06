@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://hftc3wkwnfbk"]
+
+[ext_resource type="Script" uid="uid://hasnej0gn25p" path="res://scripts/level/memory_level_controller.gd" id="1_vq1pa"]
+[ext_resource type="PackedScene" uid="uid://duf0supgxxyju" path="res://scenes/components/reactor_button.tscn" id="2_c5o3r"]
+
+[sub_resource type="Environment" id="Environment_i2aat"]
+background_mode = 3
+background_color = Color(0.26666668, 0.29411766, 0.32941177, 1)
+background_canvas_max_layer = -1
+ambient_light_source = 2
+ambient_light_color = Color(0.7490196, 0.78039217, 0.8117647, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2djvx"]
+albedo_color = Color(0.26293245, 0.26293245, 0.26293242, 1)
+metallic_specular = 0.2
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2aat"]
+material = SubResource("StandardMaterial3D_2djvx")
+
+[sub_resource type="SphereMesh" id="SphereMesh_i2aat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2aat"]
+albedo_color = Color(0.28627452, 1, 1, 1)
+emission = Color(2.8731556, 16.042698, 16.86977, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i2aat"]
+spread = 150.0
+initial_velocity_min = 2.5
+initial_velocity_max = 4.5
+gravity = Vector3(0, -4, 0)
+scale_min = 0.14999999
+scale_max = 0.25
+color = Color(1, 0.043137256, 0.2509804, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2djvx"]
+radius = 0.08
+height = 0.35
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2djvx"]
+spread = 180.0
+initial_velocity_min = 1.4
+initial_velocity_max = 2.8
+gravity = Vector3(0, 0.3, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+color = Color(0.12156863, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uvc87"]
+radius = 0.08
+height = 0.3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qdh5e"]
+spread = 180.0
+initial_velocity_min = 3.1999998
+initial_velocity_max = 6.3999996
+gravity = Vector3(0, -1, 0)
+scale_min = 0.12
+scale_max = 0.28
+color = Color(0.81359565, 0.8135867, 0.06814067, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_50wog"]
+radius = 0.1
+height = 0.25
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uvc87"]
+direction = Vector3(0, 1, 0)
+spread = 100.0
+initial_velocity_min = 0.59999996
+initial_velocity_max = 1.5999999
+gravity = Vector3(0, 0.6, 0)
+scale_min = 0.16
+scale_max = 0.32
+color = Color(0.14452109, 0.22234946, 0.25224996, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qdh5e"]
+radius = 0.12
+height = 0.25
+
+[node name="Level01" type="Node3D" unique_id=256783838]
+script = ExtResource("1_vq1pa")
+level_title = "Tutorial - Sync the Core"
+max_rounds = 4
+starting_sequence_length = 3
+round_start_delay = 0.7
+sequence_step_delay = 0.48
+sequence_gap_delay = 0.18
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2058016034]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 6, 8)
+projection = 1
+current = true
+size = 6.0
+near = 0.165
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=664191181]
+transform = Transform3D(0.90630776, 0.34618863, -0.24240388, 0, 0.57357645, 0.81915206, 0.42261827, -0.74240386, 0.5198368, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=842412683]
+environment = SubResource("Environment_i2aat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=175718883]
+transform = Transform3D(5.9998794, 0.0017860357, -0.006524486, -0.03573559, 0.2999945, -0.0034050466, 0.01300818, 0.00034438452, 2.999991, 0, 0, 0)
+mesh = SubResource("BoxMesh_i2aat")
+
+[node name="ReactorCore" type="MeshInstance3D" parent="." unique_id=1388040742]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.8, -2)
+mesh = SubResource("SphereMesh_i2aat")
+surface_material_override/0 = SubResource("StandardMaterial3D_i2aat")
+
+[node name="VFX" type="Node3D" parent="." unique_id=1303628035]
+
+[node name="ErrorSparks" type="GPUParticles3D" parent="VFX" unique_id=1876625333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9720948, -1.8908074)
+emitting = false
+amount = 28
+lifetime = 0.45
+one_shot = true
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+process_material = SubResource("ParticleProcessMaterial_i2aat")
+draw_pass_1 = SubResource("SphereMesh_2djvx")
+
+[node name="SuccessPulse" type="GPUParticles3D" parent="VFX" unique_id=1050775587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9720948, -1.8908074)
+emitting = false
+amount = 36
+lifetime = 0.6
+one_shot = true
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+process_material = SubResource("ParticleProcessMaterial_2djvx")
+draw_pass_1 = SubResource("CapsuleMesh_uvc87")
+
+[node name="VictoryBurst" type="GPUParticles3D" parent="VFX" unique_id=1207794242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9720948, -1.8908074)
+emitting = false
+amount = 90
+lifetime = 1.2
+one_shot = true
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+process_material = SubResource("ParticleProcessMaterial_qdh5e")
+draw_pass_1 = SubResource("SphereMesh_50wog")
+
+[node name="DefeatSmoke" type="GPUParticles3D" parent="VFX" unique_id=1027322514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9720948, -1.8908074)
+emitting = false
+amount = 50
+lifetime = 1.4
+one_shot = true
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+process_material = SubResource("ParticleProcessMaterial_uvc87")
+draw_pass_1 = SubResource("SphereMesh_qdh5e")
+
+[node name="Buttons" type="Node3D" parent="." unique_id=1100497850]
+
+[node name="ReactorButton_0" parent="Buttons" unique_id=1186824317 instance=ExtResource("2_c5o3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6265867, 0.26945117, 0)
+button_color = Color(0.049581036, 0.17281386, 0.408421, 1)
+
+[node name="ReactorButton_01" parent="Buttons" unique_id=1276150963 instance=ExtResource("2_c5o3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50898063, 0.26945117, 0)
+button_id = 1
+button_color = Color(0.48693198, 0.11566947, 0.086822726, 1)
+
+[node name="ReactorButton_02" parent="Buttons" unique_id=1989620696 instance=ExtResource("2_c5o3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7007654, 0.26945117, 0)
+button_id = 2
+button_color = Color(0.22080818, 0.35976118, 0.10427671, 1)
+
+[node name="ReactorButton_03" parent="Buttons" unique_id=175769111 instance=ExtResource("2_c5o3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7951102, 0.26945117, 0)
+button_id = 3
+button_color = Color(0.34727752, 0.35343844, 0.07619176, 1)

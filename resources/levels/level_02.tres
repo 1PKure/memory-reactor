@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://ce5pfvgem8yy7"]
+
+[ext_resource type="Script" uid="uid://ct3r2wqgcggam" path="res://scripts/resources/LevelData.gd" id="1_q126n"]
+
+[resource]
+script = ExtResource("1_q126n")
+level_id = 2
+level_name = "Core Sync II"
+scene_path = "res://scenes/levels/level_02.tscn"
+description = "Dare to overclock the system?"
+metadata/_custom_type_script = "uid://ct3r2wqgcggam"

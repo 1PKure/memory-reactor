@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://duf0supgxxyju"]
+
+[ext_resource type="Script" uid="uid://ctfcfeuo2xxoj" path="res://scripts/gameplay/reactorbutton.gd" id="1_hqtbt"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i4h7c"]
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.25
+radial_segments = 32
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i4h7c"]
+height = 0.3
+
+[node name="ReactorButton3D" type="Area3D" unique_id=1186824317]
+script = ExtResource("1_hqtbt")
+
+[node name="VisualMesh" type="MeshInstance3D" parent="." unique_id=317013362]
+mesh = SubResource("CylinderMesh_i4h7c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103068950]
+shape = SubResource("CylinderShape3D_i4h7c")
+
+[node name="ButtonLight" type="OmniLight3D" parent="." unique_id=1631024056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+light_energy = 0.0
+omni_range = 1.4

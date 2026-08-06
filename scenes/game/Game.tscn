@@ -1,0 +1,254 @@
+[gd_scene format=3 uid="uid://rcylyof5m8oq"]
+
+[ext_resource type="Script" uid="uid://b5grawklega0k" path="res://scripts/managers/gamemanager.gd" id="1_klkup"]
+[ext_resource type="Script" uid="uid://nd2ay2koml3l" path="res://scripts/ui/game_hud.gd" id="2_m44fu"]
+[ext_resource type="PackedScene" uid="uid://dqe8ut2uah5ms" path="res://scenes/levels/level_01.tscn" id="2_vrspl"]
+[ext_resource type="FontFile" uid="uid://chk34p3ri7cyj" path="res://assets/fonts/Oxanium-VariableFont_wght.ttf" id="3_365ku"]
+[ext_resource type="Texture2D" uid="uid://beokp1enunnxm" path="res://assets/backgrounds/Background.jpg" id="3_gg4pt"]
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/nodes/utilities/pause_menu_controller.gd" id="4_lyhax"]
+[ext_resource type="PackedScene" uid="uid://jmvw1lskd4jk" path="res://examples/scenes/windows/pause_menu_layer.tscn" id="8_wnrko"]
+
+[sub_resource type="Theme" id="Theme_gg4pt"]
+default_font = ExtResource("3_365ku")
+default_font_size = 18
+
+[node name="Game" type="Node3D" unique_id=2004792751]
+script = ExtResource("1_klkup")
+fallback_level_scene = ExtResource("2_vrspl")
+level_selector_scene_path = "uid://3pij7ci5f8gc"
+
+[node name="LevelContainer" type="Node3D" parent="." unique_id=522902886]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=863688480]
+layer = -10
+
+[node name="BackgroundTexture" type="TextureRect" parent="BackgroundLayer" unique_id=1388583091]
+anchors_preset = -1
+anchor_left = -0.086
+anchor_top = -0.163
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.08000183
+offset_top = -0.13999939
+offset_right = 110.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gg4pt")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1376619295]
+
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=232966789]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gg4pt")
+script = ExtResource("2_m44fu")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1589557678]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 190.0
+offset_right = 86.0
+offset_bottom = 213.0
+text = "Score: 0"
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/HUD" unique_id=2007034087]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 16.0
+offset_right = 760.0
+offset_bottom = 76.0
+text = "Starting up the engine..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndPanel" type="Panel" parent="CanvasLayer/HUD" unique_id=179573105]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.0
+offset_top = -143.0
+offset_right = 268.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndTitleLabel" type="Label" parent="CanvasLayer/HUD/EndPanel" unique_id=696786053]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 11.0
+offset_right = 85.0
+offset_bottom = 41.0
+text = "Result"
+
+[node name="EndDescriptionLabel" type="Label" parent="CanvasLayer/HUD/EndPanel" unique_id=2136566397]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 378.0
+offset_bottom = 170.0
+text = "Description"
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/HUD/EndPanel" unique_id=773416372]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -83.0
+offset_right = 80.0
+offset_bottom = -48.0
+grow_vertical = 0
+text = "Retry"
+
+[node name="LevelSelectorButton" type="Button" parent="CanvasLayer/HUD/EndPanel" unique_id=1898264949]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -79.0
+offset_right = -27.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back to level selector"
+
+[node name="ProtocolPanel" type="Panel" parent="CanvasLayer/HUD" unique_id=51045286]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -149.0
+offset_right = 259.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProtocolTitleLabel" type="Label" parent="CanvasLayer/HUD/ProtocolPanel" unique_id=900476680]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 19.0
+offset_right = 20.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "PROTOCOL CHOICE"
+
+[node name="ProtocolDescriptionLabel" type="Label" parent="CanvasLayer/HUD/ProtocolPanel" unique_id=625803524]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 59.0
+offset_right = 208.0
+offset_bottom = 177.0
+grow_horizontal = 2
+text = "The reactor is stable enough to push its limits"
+autowrap_mode = 2
+
+[node name="StabilizeButton" type="Button" parent="CanvasLayer/HUD/ProtocolPanel" unique_id=619289491]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = -102.0
+offset_right = 245.0
+offset_bottom = -57.0
+grow_vertical = 0
+text = "STABILIZE"
+
+[node name="OverclockButton" type="Button" parent="CanvasLayer/HUD/ProtocolPanel" unique_id=1558694771]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -102.0
+offset_right = -47.0
+offset_bottom = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "OVERCLOCK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD" unique_id=1230923358]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 105.0
+offset_right = 269.0
+offset_bottom = 153.0
+
+[node name="StabilityLabel" type="Label" parent="CanvasLayer/HUD/VBoxContainer" unique_id=1716428738]
+layout_mode = 2
+text = "STABILITY"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD/VBoxContainer" unique_id=523051368]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+step = 1.0
+value = 100.0
+
+[node name="RoundIndicators" type="HBoxContainer" parent="CanvasLayer/HUD" unique_id=665641125]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 1
+offset_left = 25.0
+offset_top = 47.0
+offset_right = 65.0
+offset_bottom = 87.0
+theme_override_constants/separation = 8
+
+[node name="ReactorInfo" type="VBoxContainer" parent="CanvasLayer/HUD" unique_id=1221256457]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 101.0
+offset_right = 68.0
+offset_bottom = 301.0
+grow_horizontal = 2
+theme_override_constants/separation = 125
+
+[node name="ReactorTitleLabel" type="Label" parent="CanvasLayer/HUD/ReactorInfo" unique_id=251944989]
+layout_mode = 2
+text = "REACTOR CORE"
+horizontal_alignment = 1
+
+[node name="ReactorStatusLabel" type="Label" parent="CanvasLayer/HUD/ReactorInfo" unique_id=67911499]
+layout_mode = 2
+text = "STABLE"
+horizontal_alignment = 1
+
+[node name="PauseNode" type="Node" parent="." unique_id=341810826]
+script = ExtResource("4_lyhax")
+pause_menu_packed = ExtResource("8_wnrko")
+
+[node name="PauseCanvasLayer" type="CanvasLayer" parent="." unique_id=1344045267]
+layer = 110
+
+[node name="PauseMenuLayer" parent="PauseCanvasLayer" unique_id=914002369 instance=ExtResource("8_wnrko")]
+layer = 100
+visible = false

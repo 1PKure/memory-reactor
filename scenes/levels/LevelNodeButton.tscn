@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b32alr3o0vwy"]
+
+[ext_resource type="FontFile" uid="uid://chk34p3ri7cyj" path="res://assets/fonts/Oxanium-VariableFont_wght.ttf" id="1_55dh1"]
+[ext_resource type="Script" uid="uid://cjdgpmp6mys0f" path="res://scripts/button/LevelNodeButton.gd" id="1_m2f6g"]
+[ext_resource type="Shader" uid="uid://de1gvx2jntkot" path="res://shaders/portal_ao_shader.gdshader" id="2_tnuir"]
+[ext_resource type="Script" uid="uid://bo3ep2ukbeipo" path="res://scripts/level/PortalInteraction.gd" id="3_pq5nv"]
+
+[sub_resource type="Theme" id="Theme_c07pk"]
+default_font = ExtResource("1_55dh1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq5nv"]
+shader = ExtResource("2_tnuir")
+shader_parameter/portal_speed = 1.0
+shader_parameter/portal_intensity = 1.0
+shader_parameter/vertical_stretch = 1.35
+shader_parameter/outer_color = Color(0.85, 0.45, 1, 1)
+shader_parameter/middle_color = Color(0.95, 0.6, 1, 1)
+shader_parameter/inner_color = Color(0.75, 0.3, 0.95, 1)
+
+[node name="Button" type="Button" unique_id=1538312497]
+custom_minimum_size = Vector2(150, 250)
+offset_right = 130.0
+offset_bottom = 53.0
+theme = SubResource("Theme_c07pk")
+flat = true
+script = ExtResource("1_m2f6g")
+
+[node name="PortalVisual" type="ColorRect" parent="." unique_id=1316545418]
+material = SubResource("ShaderMaterial_pq5nv")
+custom_minimum_size = Vector2(150, 250)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 140.0
+mouse_filter = 2
+
+[node name="PortalInteraction" type="Control" parent="." unique_id=1109114639 node_paths=PackedStringArray("button", "portal_visual")]
+custom_minimum_size = Vector2(150, 250)
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 250.0
+mouse_filter = 2
+script = ExtResource("3_pq5nv")
+button = NodePath("..")
+portal_visual = NodePath("../PortalVisual")
+
+[node name="IconTexture" type="TextureRect" parent="." unique_id=2074097249]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_top = 8.0
+offset_right = 28.0
+offset_bottom = 27.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="." unique_id=457198275]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 93.0
+offset_right = 20.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LockIcon" type="TextureRect" parent="." unique_id=867867867]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_top = 34.0
+offset_right = 17.0
+offset_bottom = 55.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="StarsLabel" type="Label" parent="." unique_id=571592124]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2

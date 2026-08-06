@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bdmxvd8ommx86"]
+
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_4u2ru"]
+[ext_resource type="Script" uid="uid://dqjjy8av3iavl" path="res://examples/scenes/menus/main_menu/main_menu.gd" id="2_0c83f"]
+[ext_resource type="PackedScene" uid="uid://dxcs01e5yunie" path="res://examples/scenes/windows/main_menu_options_window.tscn" id="3_72rer"]
+[ext_resource type="PackedScene" uid="uid://cidxfnc26jcya" path="res://examples/scenes/windows/main_menu_credits_window.tscn" id="4_80h0p"]
+
+[node name="MainMenu" unique_id=869232425 instance=ExtResource("1_4u2ru")]
+script = ExtResource("2_0c83f")
+game_scene_path = "uid://rcylyof5m8oq"
+options_packed_scene = ExtResource("3_72rer")
+credits_packed_scene = ExtResource("4_80h0p")
+
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" parent_id_path=PackedInt32Array(556427956) index="0" unique_id=359406872]
+text = "TP2Game"

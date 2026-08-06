@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bi6m6nghynmjn"]
+
+[ext_resource type="Script" uid="uid://blodi5txrn28r" path="res://scripts/managers/audio_manager.gd" id="1_h5u4l"]
+[ext_resource type="AudioStream" uid="uid://chgrayu23g8db" path="res://audio/buttons/switch9.wav" id="2_v7pfr"]
+[ext_resource type="AudioStream" uid="uid://etoo8fk8kd7d" path="res://audio/buttons/switch15.wav" id="3_xu4a8"]
+[ext_resource type="AudioStream" uid="uid://h03nipjm8nf0" path="res://audio/buttons/switch20.wav" id="4_li0p0"]
+[ext_resource type="AudioStream" uid="uid://dh2u5hccpyks8" path="res://audio/buttons/switch37.wav" id="5_nhqt3"]
+[ext_resource type="AudioStream" uid="uid://d1dhcy1yitq23" path="res://audio/fx/Downer01.wav" id="6_xngj1"]
+[ext_resource type="AudioStream" uid="uid://bj8sc54k45t6x" path="res://audio/fx/Rise01.wav" id="7_m8mku"]
+[ext_resource type="AudioStream" uid="uid://bcxy3nobilwcu" path="res://audio/fx/Rise07.wav" id="8_chxat"]
+[ext_resource type="AudioStream" uid="uid://rgwepwwgc2vo" path="res://audio/fx/Upper01.wav" id="9_05mkw"]
+
+[node name="AudioManager" type="Node" unique_id=1577862408]
+script = ExtResource("1_h5u4l")
+button_sounds = Array[AudioStream]([ExtResource("2_v7pfr"), ExtResource("3_xu4a8"), ExtResource("4_li0p0"), ExtResource("5_nhqt3")])
+error_sound = ExtResource("6_xngj1")
+success_sound = ExtResource("7_m8mku")
+victory_sound = ExtResource("8_chxat")
+defeat_sound = ExtResource("9_05mkw")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=198353633]
+
+[node name="ButtonSfxPlayer" type="AudioStreamPlayer" parent="." unique_id=1460289201]
+
+[node name="FeedbackSfxPlayer" type="AudioStreamPlayer" parent="." unique_id=2077952795]

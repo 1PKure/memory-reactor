@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cimvyjgpgthe1"]
+
+[ext_resource type="Script" uid="uid://ct3r2wqgcggam" path="res://scripts/resources/LevelData.gd" id="1_au1ki"]
+
+[resource]
+script = ExtResource("1_au1ki")
+level_id = 3
+level_name = "Core Sync III"
+scene_path = "res://scenes/levels/level_03.tscn"
+description = "You're at the finish line."
+metadata/_custom_type_script = "uid://ct3r2wqgcggam"

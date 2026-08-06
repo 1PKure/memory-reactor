@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://3pij7ci5f8gc"]
+
+[ext_resource type="FontFile" uid="uid://chk34p3ri7cyj" path="res://assets/fonts/Oxanium-VariableFont_wght.ttf" id="1_i2si6"]
+[ext_resource type="Script" uid="uid://bpxxyre200g7e" path="res://scripts/level/levelselector.gd" id="1_rqfkl"]
+[ext_resource type="Script" uid="uid://ct3r2wqgcggam" path="res://scripts/resources/LevelData.gd" id="2_vj03c"]
+[ext_resource type="Resource" uid="uid://cimvyjgpgthe1" path="res://resources/levels/level_03.tres" id="3_56kad"]
+[ext_resource type="Script" uid="uid://cka81vy6pcr1i" path="res://scripts/resources/LevelDatabase.gd" id="3_hjtau"]
+[ext_resource type="Resource" uid="uid://ce5pfvgem8yy7" path="res://resources/levels/level_02.tres" id="4_2ec5i"]
+[ext_resource type="PackedScene" uid="uid://b32alr3o0vwy" path="res://scenes/levels/LevelNodeButton.tscn" id="4_56kad"]
+[ext_resource type="Resource" uid="uid://sku42ccq2dm7" path="res://resources/levels/level_01.tres" id="5_5lm0q"]
+[ext_resource type="Texture2D" uid="uid://btbcuk74pdloj" path="res://assets/backgrounds/asd.png" id="9_k8wwf"]
+
+[sub_resource type="Theme" id="Theme_k8wwf"]
+default_font = ExtResource("1_i2si6")
+default_font_size = 20
+
+[sub_resource type="Resource" id="Resource_rqfkl"]
+script = ExtResource("3_hjtau")
+levels = Array[ExtResource("2_vj03c")]([ExtResource("5_5lm0q"), ExtResource("4_2ec5i"), ExtResource("3_56kad")])
+metadata/_custom_type_script = "uid://cka81vy6pcr1i"
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqfkl"]
+line_spacing = 5.0
+font_size = 30
+
+[node name="LevelSelector" type="Control" unique_id=484349327]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_k8wwf")
+script = ExtResource("1_rqfkl")
+level_database = SubResource("Resource_rqfkl")
+level_node_scene = ExtResource("4_56kad")
+game_scene_path = "uid://rcylyof5m8oq"
+
+[node name="Background" type="TextureRect" parent="." unique_id=827994357]
+self_modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_k8wwf")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="." unique_id=270575234]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_right = 134.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "SELECT LEVEL"
+label_settings = SubResource("LabelSettings_rqfkl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelContainer" type="GridContainer" parent="." unique_id=2082014818]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.321
+anchor_top = 0.34600002
+anchor_right = 0.68200004
+anchor_bottom = 0.731
+offset_left = 0.11999512
+offset_top = -0.120010376
+offset_right = 0.039916992
+offset_bottom = -0.32000732
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 30
+columns = 3
+
+[node name="PreviewPanel" type="Panel" parent="." unique_id=633588704]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PreviewImage" type="TextureRect" parent="PreviewPanel" unique_id=1246501764]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="LevelName" type="Label" parent="PreviewPanel" unique_id=2065142024]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
+grow_horizontal = 2
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="PreviewPanel" unique_id=441698481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 117.0
+offset_right = -11.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+autowrap_mode = 3
+
+[node name="PlayButton" type="Button" parent="PreviewPanel" unique_id=196965698]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "PLAY"
+
+[node name="BackButton" type="Button" parent="." unique_id=729027549]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -65.0
+offset_right = 164.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "BACK"
